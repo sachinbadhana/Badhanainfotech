@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>PaisaVault</h2>
+
+<input id="user" placeholder="Username"><br><br>
+<input id="amt" placeholder="Amount"><br><br>
+
+<button onclick="deposit()">Deposit</button>
+<button onclick="withdraw()">Withdraw</button>
+
+<script>
+const API = "https://YOUR_RENDER_URL";
+
+async function deposit(){
+  await fetch(API+"/deposit",{
+    method:"POST",
+    headers:{"Content-Type":"application/json"},
+    body:JSON.stringify({
+      username:user.value,
+      amount:Number(amt.value)
+    })
+  });
+  alert("Deposited");
+}
+
+async function withdraw(){
+  await fetch(API+"/withdraw",{
+    method:"POST",
+    headers:{"Content-Type":"application/json"},
+    body:JSON.stringify({
+      username:user.value,
+      amount:Number(amt.value)
+    })
+  });
+  alert("Withdraw sent");
+}
+</script>
+
+</body>
+</html>
