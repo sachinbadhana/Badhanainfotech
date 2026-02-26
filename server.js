@@ -33,8 +33,10 @@ app.post("/withdraw",(req,res)=>{
   res.send("Withdraw requested");
 });
 
-app.get("/",(req,res)=>{
-  res.send("Backend running");
+app.use(express.static(__dirname));
+
+app.get("/", (req, res) => {
+  res.sendFile(__dirname + "/index.html");
 });
 
 app.listen(5000);
